@@ -1,0 +1,64 @@
+{
+  "model_name": "Random Forest Ensemble Classifier",
+  "module": "Module 2: Learning with Trees (Ensemble Bagging)",
+  "dataset_size": 400,
+  "test_samples": 80,
+  "features_count": 16,
+  "feature_names": [
+    "lexical_diversity",
+    "avg_sentence_length",
+    "sentence_length_std",
+    "avg_word_length",
+    "comma_freq",
+    "semicolon_freq",
+    "exclamation_freq",
+    "question_freq",
+    "stopword_ratio",
+    "flesch_reading_ease",
+    "flesch_kincaid_grade",
+    "noun_ratio",
+    "verb_ratio",
+    "adjective_ratio",
+    "adverb_ratio",
+    "ai_discourse_markers"
+  ],
+  "feature_labels": {
+    "lexical_diversity": "Lexical Diversity (Type-Token Ratio)",
+    "avg_sentence_length": "Avg Sentence Length (words)",
+    "sentence_length_std": "Sentence Length Std Dev (Burstiness)",
+    "avg_word_length": "Avg Word Length (chars)",
+    "comma_freq": "Comma Frequency per Sentence",
+    "semicolon_freq": "Semicolon/Colon Frequency",
+    "exclamation_freq": "Exclamation Mark Frequency",
+    "question_freq": "Question Mark Frequency",
+    "stopword_ratio": "Stopword Ratio",
+    "flesch_reading_ease": "Flesch Reading Ease (0-100)",
+    "flesch_kincaid_grade": "Flesch-Kincaid Grade Level",
+    "noun_ratio": "Noun Ratio (POS)",
+    "verb_ratio": "Verb Ratio (POS)",
+    "adjective_ratio": "Adjective Ratio (POS)",
+    "adverb_ratio": "Adverb Ratio (POS)",
+    "ai_discourse_markers": "AI Formal Discourse Markers (per 100 words)"
+  },
+  "accuracy": 0.9875,
+  "precision": 1.0,
+  "recall": 0.975,
+  "f1_score": 0.9873,
+  "cv_f1_mean": 1.0,
+  "cv_f1_std": 0.0,
+  "oob_score": 0.9969,
+  "confusion_matrix": [
+    [
+      40,
+      0
+    ],
+    [
+      1,
+      39
+    ]
+  ],
+  "pca_variance": [
+    0.4915,
+    0.0883
+  ]
+}
