@@ -27,7 +27,6 @@ import features
 
 PLOTS_DIR = os.path.join("static", "plots")
 MODELS_DIR = "models"
-DATA_PATH = os.path.join("data", "ai_vs_human_dataset.csv")
 AI_HUMAN_PATH = "AI_Human.csv"
 SAMPLED_10K_PATH = os.path.join("data", "ai_human_10k_sampled.csv")
 FEATURES_CACHE_PATH = os.path.join("data", "features_10k_cache.joblib")
@@ -60,12 +59,10 @@ def train_and_evaluate():
         df = df[["text", "label"]]
         df.to_csv(SAMPLED_10K_PATH, index=False)
         print(f"Saved balanced 10,000-sample dataset to {SAMPLED_10K_PATH}.")
-    elif os.path.exists(DATA_PATH):
-        df = pd.read_csv(DATA_PATH)
     else:
-        import dataset_generator
-        df = dataset_generator.expand_dataset()
-        df.to_csv(DATA_PATH, index=False)
+        raise FileNotFoundError(
+            f"No valid dataset found. Please ensure '{SAMPLED_10K_PATH}' or '{AI_HUMAN_PATH}' is present."
+        )
 
     print(f"Loaded dataset: {len(df)} samples ({sum(df['label'] == 0)} Human, {sum(df['label'] == 1)} AI)")
 

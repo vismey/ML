@@ -27,8 +27,7 @@ Rather than relying on opaque deep neural networks, this project leverages **16 
 - [Quick Start Guide](#-quick-start-guide)
   - [1. Prerequisites & Installation](#1-prerequisites--installation)
   - [2. Run the Web Application](#2-run-the-web-application)
-  - [3. Run CLI Inference](#3-run-cli-inference)
-  - [4. Re-train the Pipeline](#4-re-train-the-pipeline)
+  - [3. Re-train the Pipeline](#3-re-train-the-pipeline)
 - [REST API Reference](#-rest-api-reference)
 - [License & Acknowledgments](#-license--acknowledgments)
 
@@ -144,13 +143,12 @@ All charts are generated during training via `train.py` and saved to `static/plo
 
 ```text
 ├── app.py                      # Flask backend application & REST API routes
-├── dataset_generator.py        # Curated balanced dataset generation engine
 ├── features.py                 # Handcrafted statistical & linguistic feature extractor
 ├── train.py                    # Complete training, PCA, cross-validation & plotting pipeline
-├── test_detector.py            # CLI verification script for rapid local testing
 ├── requirements.txt            # Python dependencies
 ├── data/
-│   └── ai_vs_human_dataset.csv # 400 labeled text samples (200 Human, 200 AI)
+│   ├── ai_human_10k_sampled.csv   # 10,000 balanced text samples (5,000 Human, 5,000 AI)
+│   └── features_10k_cache.joblib  # Serialized 16-feature matrix for 10k samples
 ├── models/
 │   ├── feature_scaler.joblib   # Fitted StandardScaler instance
 │   ├── pca_transformer.joblib  # Fitted PCA 2D transformer
@@ -207,15 +205,7 @@ Open your browser and navigate to:
 http://127.0.0.1:5000
 ```
 
-### 3. Run CLI Inference
-
-Test sample texts directly in your console:
-
-```bash
-python test_detector.py
-```
-
-### 4. Re-train the Pipeline
+### 3. Re-train the Pipeline
 
 To regenerate plots, retrain the Random Forest model, and compute updated evaluation metrics:
 
