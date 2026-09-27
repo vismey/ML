@@ -1,8 +1,8 @@
 {
   "model_name": "Random Forest Ensemble Classifier",
-  "module": "Module 2: Learning with Trees (Ensemble Bagging)",
-  "dataset_size": 400,
-  "test_samples": 80,
+  "dataset_name": "AI_Human.csv (Balanced 10k Sample)",
+  "dataset_size": 10000,
+  "test_samples": 2000,
   "features_count": 16,
   "feature_names": [
     "lexical_diversity",
@@ -40,25 +40,25 @@
     "adverb_ratio": "Adverb Ratio (POS)",
     "ai_discourse_markers": "AI Formal Discourse Markers (per 100 words)"
   },
-  "accuracy": 0.9875,
-  "precision": 1.0,
-  "recall": 0.975,
-  "f1_score": 0.9873,
-  "cv_f1_mean": 1.0,
-  "cv_f1_std": 0.0,
-  "oob_score": 0.9969,
+  "accuracy": 0.8975,
+  "precision": 0.9215,
+  "recall": 0.869,
+  "f1_score": 0.8945,
+  "cv_f1_mean": 0.8982,
+  "cv_f1_std": 0.0083,
+  "oob_score": 0.9036,
   "confusion_matrix": [
     [
-      40,
-      0
+      926,
+      74
     ],
     [
-      1,
-      39
+      131,
+      869
     ]
   ],
   "pca_variance": [
-    0.4915,
-    0.0883
+    0.2979,
+    0.1575
   ]
 }

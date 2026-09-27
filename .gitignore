@@ -8,3 +8,8 @@ env/
 ENV/
 .DS_Store
 Thumbs.db
+
+# Large Datasets & Cache (exceeds GitHub 100MB limit)
+AI_Human.csv
+data/ai_human_10k_sampled.csv
+data/features_10k_cache.joblib

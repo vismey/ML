@@ -244,8 +244,14 @@ def extract_features_dict(text: str) -> dict:
 
 
 def extract_features_dataframe(texts) -> pd.DataFrame:
-    """Extracts features for an iterable of texts into a pandas DataFrame."""
-    feature_rows = [extract_features_dict(t) for t in texts]
+    """Extracts features for an iterable of texts into a pandas DataFrame using parallel processing."""
+    try:
+        from joblib import Parallel, delayed
+        feature_rows = Parallel(n_jobs=-1, batch_size=50)(
+            delayed(extract_features_dict)(t) for t in texts
+        )
+    except Exception:
+        feature_rows = [extract_features_dict(t) for t in texts]
     return pd.DataFrame(feature_rows)
 
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Forest AI vs Human Text Detector | ML Mini-Project</title>
-  <meta name="description" content="AI vs Human text detector using Random Forest Ensemble Classifier (Module 2: Learning with Trees) and handcrafted statistical features adhering to the ML syllabus.">
+  <title>Random Forest AI vs Human Text Detector | ML Project</title>
+  <meta name="description" content="AI vs Human text detector using Random Forest Ensemble Classifier and handcrafted statistical features trained on AI_Human.csv.">
 
   <!-- Google Fonts: Outfit & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,11 +17,6 @@
   <div class="container">
     <!-- Header -->
     <header class="header">
-      <div class="syllabus-badge-row">
-        <span class="badge badge-module2">Module 2: Learning with Trees (Random Forest)</span>
-        <span class="badge badge-module1">Module 1: Dimensionality Reduction (PCA)</span>
-        <span class="badge badge-tag">Classical ML • No Deep Learning</span>
-      </div>
       <h1 class="title-glow">Random Forest Text Detector</h1>
       <p class="header-subtitle">
         Classifying AI-generated (ChatGPT/Claude) vs human-written text using Random Forest Ensemble Learning and 16 handcrafted statistical linguistic features.
@@ -59,9 +54,9 @@
             </div>
           </div>
 
-          <!-- Sample Quick Fill Chips -->
-          <div class="sample-chips-row">
-            <span style="font-size:0.75rem; color:var(--text-dim); align-self:center;">Try Presets:</span>
+          <!-- Presets -->
+          <div class="preset-row">
+            <span class="preset-label">Test Samples:</span>
             <button class="sample-chip" onclick="loadPreset('ai_academic')">🎓 AI Academic</button>
             <button class="sample-chip" onclick="loadPreset('human_casual')">☕ Human Casual</button>
             <button class="sample-chip" onclick="loadPreset('ai_formal')">🤖 AI Formal</button>
@@ -72,17 +67,17 @@
             <textarea 
               id="inputText" 
               class="custom-textarea" 
-              placeholder="Paste any paragraph or essay here (minimum 20-30 words recommended for statistical feature extraction)..."
+              placeholder="Paste any essay, article, or paragraph here (minimum 20-30 words recommended for linguistic feature extraction)..."
               oninput="updateWordCount()"
             ></textarea>
           </div>
 
           <div class="controls-bar">
-            <!-- Fixed Model Indicator (Random Forest) -->
+            <!-- Active Model Indicator (Random Forest) -->
             <div style="flex:1; display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
               <span style="font-size:1.1rem;">🌲</span>
               <div>
-                <div style="font-size:0.75rem; color:var(--text-dim); font-weight:600; text-transform:uppercase;">Active Model (Syllabus)</div>
+                <div style="font-size:0.75rem; color:var(--text-dim); font-weight:600; text-transform:uppercase;">Active Classifier</div>
                 <div style="font-size:0.9rem; font-weight:700; color:#818cf8;">Random Forest Classifier (100 Trees)</div>
               </div>
             </div>
@@ -105,7 +100,7 @@
 
           <!-- Dynamic Output (Hidden until run) -->
           <div id="outputContent" style="display:none;">
-            <!-- Verdict Banner -->
+            <!-- Primary Verdict Banner -->
             <div id="verdictCard" class="verdict-card human">
               <div class="verdict-pill" id="verdictBadge">Random Forest Verdict</div>
               <div class="verdict-title" id="verdictTitle">Human-Written</div>
@@ -125,7 +120,7 @@
             </div>
 
             <!-- Handcrafted Statistical Features Grid -->
-            <h4 style="font-size:0.9rem; font-weight:700; margin-top:14px; margin-bottom:8px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+            <h4 style="font-size:0.85rem; font-weight:700; margin-top:16px; margin-bottom:8px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
               Extracted Handcrafted Features
             </h4>
             <div class="features-grid">
@@ -152,7 +147,7 @@
             </div>
 
             <!-- Explainability / Cues -->
-            <h4 style="font-size:0.9rem; font-weight:700; margin-top:16px; margin-bottom:8px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+            <h4 style="font-size:0.85rem; font-weight:700; margin-top:16px; margin-bottom:8px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
               Linguistic Evidence & Interpretability
             </h4>
             <ul class="explanations-list" id="explanationsList">
@@ -167,50 +162,50 @@
     <section class="tab-pane" id="paneBenchmarks">
       <div class="glass-card" style="margin-bottom:24px;">
         <h2 class="section-title">
-          <span>🌲</span> Random Forest Evaluation Metrics (Module 2)
+          <span>🌲</span> Random Forest Evaluation Metrics
         </h2>
         <p style="font-size:0.9rem; color:var(--text-muted); margin-top:4px;">
-          Evaluated on the test split (N=80) and rigorously validated using 5-Fold Stratified Cross-Validation and Out-of-Bag (OOB) error estimation.
+          Trained on balanced 10,000-sample dataset from <code>AI_Human.csv</code>. Evaluated on an independent 2,000-sample test split with 5-Fold Stratified Cross-Validation and Out-of-Bag (OOB) error estimation.
         </p>
 
         <!-- KPI Scorecards Grid -->
         <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-top:16px;" id="metricsCardsRow">
           <div class="feature-box" style="text-align:center;">
             <div class="feature-title">Test Accuracy</div>
-            <div class="feature-val" style="color:#34d399;" id="metricAccuracy">98.75%</div>
+            <div class="feature-val" style="color:#34d399;" id="metricAccuracy">89.75%</div>
             <div class="feature-hint">Overall accuracy</div>
           </div>
           <div class="feature-box" style="text-align:center;">
             <div class="feature-title">Precision</div>
-            <div class="feature-val" style="color:#38bdf8;" id="metricPrecision">1.0000</div>
-            <div class="feature-hint">Zero false positives</div>
+            <div class="feature-val" style="color:#38bdf8;" id="metricPrecision">0.9215</div>
+            <div class="feature-hint">AI precision score</div>
           </div>
           <div class="feature-box" style="text-align:center;">
             <div class="feature-title">Recall</div>
-            <div class="feature-val" style="color:#c084fc;" id="metricRecall">0.9750</div>
+            <div class="feature-val" style="color:#c084fc;" id="metricRecall">0.8690</div>
             <div class="feature-hint">True positive rate</div>
           </div>
           <div class="feature-box" style="text-align:center;">
             <div class="feature-title">F1-Score</div>
-            <div class="feature-val" style="color:#fbbf24;" id="metricF1">0.9873</div>
+            <div class="feature-val" style="color:#fbbf24;" id="metricF1">0.8945</div>
             <div class="feature-hint">Harmonic mean</div>
           </div>
           <div class="feature-box" style="text-align:center;">
             <div class="feature-title">5-Fold CV F1</div>
-            <div class="feature-val" style="color:#34d399;" id="metricCV">1.0000</div>
-            <div class="feature-hint">±0.0000 std dev</div>
+            <div class="feature-val" style="color:#34d399;" id="metricCV">0.8982</div>
+            <div class="feature-hint">±0.0083 std dev</div>
           </div>
         </div>
       </div>
 
       <div class="plots-grid">
         <div class="plot-card">
-          <h4>Confusion Matrix (Random Forest, N=80)</h4>
+          <h4>Confusion Matrix (Random Forest Test Set)</h4>
           <p>Displaying True Positives, True Negatives, False Positives, and False Negatives</p>
           <img src="/static/plots/confusion_matrix.png" alt="Random Forest Confusion Matrix" loading="lazy">
         </div>
         <div class="plot-card">
-          <h4>Ensemble Variance Reduction (Trees vs Error)</h4>
+          <h4>Ensemble Variance Reduction (Trees vs Error Rate)</h4>
           <p>Illustrates how bootstrap aggregation (bagging) steadily reduces classification variance</p>
           <img src="/static/plots/rf_trees_analysis.png" alt="Random Forest Estimators Analysis" loading="lazy">
         </div>
@@ -219,43 +214,15 @@
 
     <!-- TAB 3: FEATURE IMPORTANCE & PCA -->
     <section class="tab-pane" id="paneTheory">
-      <!-- Syllabus Curriculum Mapping Cards -->
-      <div class="syllabus-cards-grid">
-        <div class="module-box">
-          <div class="module-box-header">
-            <h3 class="module-title" style="color:#38bdf8;">Module 1: Dimensionality Reduction & Bias/Variance</h3>
-            <span class="badge badge-module1">Syllabus Module 1</span>
-          </div>
-          <ul class="module-items-list">
-            <li><strong>PCA 2D Projection:</strong> Unsupervised linear dimensionality reduction projecting 16 handcrafted features into a 2D plane capturing &gt;57% variance.</li>
-            <li><strong>Variance Reduction via Bagging:</strong> Individual decision trees have low bias but high variance; Random Forest aggregates 100 de-correlated trees to achieve low bias and minimal variance.</li>
-            <li><strong>Out-of-Bag (OOB) Estimation:</strong> Evaluates generalization capability without requiring an independent validation partition.</li>
-          </ul>
-        </div>
-
-        <div class="module-box">
-          <div class="module-box-header">
-            <h3 class="module-title" style="color:#c084fc;">Module 2: Learning with Trees (Random Forest)</h3>
-            <span class="badge badge-module2">Syllabus Module 2</span>
-          </div>
-          <ul class="module-items-list">
-            <li><strong>Ensemble Bagging:</strong> Combines bootstrap sampling of data with random feature subspace selection at each split.</li>
-            <li><strong>Gini Impurity Splitting:</strong> Each internal node selects the handcrafted feature minimizing class impurity: $I_G = 1 - \sum p_i^2$.</li>
-            <li><strong>Feature Importance:</strong> Measures aggregate reduction in Gini Impurity brought by each feature across all 100 trees.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Plots Grid -->
       <div class="plots-grid">
         <div class="plot-card">
           <h4>Handcrafted Feature Importance (Gini Score)</h4>
-          <p>Ranking the 16 handcrafted statistical metrics by their predictive power</p>
+          <p>Ranking the 16 handcrafted statistical metrics by their predictive power in the Random Forest</p>
           <img src="/static/plots/feature_importance.png" alt="Feature Importance Ranking" loading="lazy">
         </div>
 
         <div class="plot-card">
-          <h4>PCA 2D Feature Space Projection (Module 1)</h4>
+          <h4>PCA 2D Feature Space Projection</h4>
           <p>2D projection showing clean cluster separability between Human and AI texts</p>
           <img src="/static/plots/pca_projection.png" alt="PCA 2D Projection" loading="lazy">
         </div>
@@ -264,8 +231,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>Machine Learning Mini-Project: AI vs Human Text Detector (Random Forest Classifier)</p>
-      <p style="margin-top:4px;">Implemented with scikit-learn, NLTK, textstat, and Flask • Pure Classical ML Architecture</p>
+      <p>Machine Learning Project: AI vs Human Text Detector (Random Forest Classifier)</p>
+      <p style="margin-top:4px;">Implemented with scikit-learn, NLTK, textstat, and Flask • Pure Classical ML Ensemble Architecture</p>
     </footer>
   </div>
 

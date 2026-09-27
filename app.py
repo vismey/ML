@@ -1,7 +1,7 @@
 """
 app.py
 Flask web server for the AI vs Human Text Detector.
-Exclusively powered by the Random Forest Ensemble Classifier (Module 2: Learning with Trees).
+Exclusively powered by the Random Forest Ensemble Classifier (Learning with Trees: Bagging).
 """
 
 import os

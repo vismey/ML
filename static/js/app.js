@@ -68,7 +68,7 @@ async function analyzeText() {
   const text = document.getElementById('inputText').value.trim();
 
   if (!text) {
-    alert('Please enter or paste some text first, or click one of the preset buttons!');
+    alert('Please enter or paste some text first, or click one of the preset sample buttons!');
     return;
   }
 
@@ -79,7 +79,7 @@ async function analyzeText() {
   // Loading state
   analyzeBtn.disabled = true;
   btnIcon.innerHTML = '<span class="spinner"></span>';
-  btnText.textContent = 'Random Forest Analyzing...';
+  btnText.textContent = 'Random Forest Classifying...';
 
   try {
     const response = await fetch('/api/predict', {
@@ -119,7 +119,7 @@ function renderPrediction(data) {
 
   verdictCard.className = `verdict-card ${isHuman ? 'human' : 'ai'}`;
   verdictTitle.textContent = data.prediction;
-  verdictBadge.textContent = isHuman ? 'Natural Human Writing' : 'AI Synthetic Text';
+  verdictBadge.textContent = isHuman ? 'Natural Human Writing' : 'AI-Generated Text';
   verdictConfidence.textContent = `Random Forest Confidence: ${data.confidence}%`;
 
   // Probability bars
